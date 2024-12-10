@@ -4,9 +4,10 @@ def parse_input():
 
     with open("input.txt") as file:
         for line in file:
-            line = line.split("   ")
-            loc_ID_list1.append(int(line[0].strip()))
-            loc_ID_list2.append(int(line[1].strip()))
+            if(line):
+                line = line.split("   ")
+                loc_ID_list1.append(int(line[0].strip()))
+                loc_ID_list2.append(int(line[1].strip()))
 
     loc_ID_list1.sort()
     loc_ID_list2.sort()
@@ -24,7 +25,7 @@ def calculate_similarity(list1, list2):
     for index in range(len(list1)):
         total_similarity += list1[index] * list2.count(list1[index])
     return total_similarity
-
+ 
 id_list1, id_list2 = parse_input()
 print(f"The total distance is: {calculate_difference(id_list1, id_list2)}")
 print(f"The total similarity is: {calculate_similarity(id_list1, id_list2)}")
